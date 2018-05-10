@@ -17,15 +17,15 @@
   ~ under the License.
   --%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
 <h1>Welcome to Axis2 Web Admin Module !!</h1>
-<p>You are now logged into the Axis2 administration console from inside
-the console you will be able to</p>
-    <ul>
-        <li>to check on the health of your Axis2 deployment.</li>
-        <li>to change any parameters at run time.</li>
-        <li>to upload new services into Axis2 [Service hot-deployment].</li>
-    </ul>
+<p>You are now logged into the Axis2 administration console from
+	inside the console you will be able to</p>
+<ul>
+	<li>to check on the health of your Axis2 deployment.</li>
+	<li>to change any parameters at run time.</li>
+	<li>to upload new services into Axis2 [Service hot-deployment].</li>
+</ul>
 
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

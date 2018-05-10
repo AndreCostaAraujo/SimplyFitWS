@@ -16,10 +16,10 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-<%@ page contentType="text/html;charset=iso-8859-1" language="java" %>
+<%@ page contentType="text/html;charset=iso-8859-1" language="java"%>
 </td>
 </tr>
 </table>
-<jsp:include page="footer.inc"/>
+<jsp:include page="footer.inc" />
 </body>
 </html>

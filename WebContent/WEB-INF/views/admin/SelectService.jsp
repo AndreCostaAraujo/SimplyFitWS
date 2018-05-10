@@ -17,16 +17,17 @@
   ~ under the License.
   --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="org.apache.axis2.Constants,
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page
+	import="org.apache.axis2.Constants,
                  org.apache.axis2.description.AxisService,
                  java.util.Collection,
                  java.util.HashMap,
                  java.util.Iterator"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
 
-  <%
+<%
       String buttonName="" ;
       String status = (String)request.getSession().getAttribute(Constants.SELECT_SERVICE_TYPE);
       String heading = "";
@@ -47,31 +48,35 @@
   %>
 <h1><%=heading%></h1>
 <p><%=disc%></p>
-<form method="get" name="selectServiceForm" action="<c:url value="axis2-admin/${requestScope.action}"/>">
-<table summary="main content table" border="0" style="width: 50%" cellspacing="1" cellpadding="1">
-         <tr>
-        <td style="width: 35%">Select a Service :</td><td style="width:65%">
-            <select name="axisService">
-            <%
+<form method="get" name="selectServiceForm"
+	action="<c:url value="axis2-admin/${requestScope.action}"/>">
+	<table summary="main content table" border="0" style="width: 50%"
+		cellspacing="1" cellpadding="1">
+		<tr>
+			<td style="width: 35%">Select a Service :</td>
+			<td style="width: 65%"><select name="axisService">
+					<%
                 HashMap services = (HashMap)request.getSession().getAttribute(Constants.SERVICE_MAP);
                 Collection serviceCol =  services.values();
                 for (Iterator iterator = serviceCol.iterator(); iterator.hasNext();) {
                     AxisService axisService = (AxisService)iterator.next();
                     String serviceName = axisService.getName();
-            %> <option value="<%=serviceName%>"><%=serviceName%></option>
-             <%
+            %>
+					<option value="<%=serviceName%>"><%=serviceName%></option>
+					<%
                 }
                 request.getSession().setAttribute(Constants.SERVICE_MAP,null);
              %>
-             </select>
-           </td>
-        </tr>
-	<tr><td colspan="2">&nbsp;</td></tr>
-        <tr><td>&nbsp;</td>
-             <td colspan="2" align="left">
-                <input name="submit" type="submit" value="<%=buttonName%>" >
-             </td>
-         </tr>
-      </table>
-   </form>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+			</select></td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td colspan="2" align="left"><input name="submit" type="submit"
+				value="<%=buttonName%>"></td>
+		</tr>
+	</table>
+</form>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

@@ -17,15 +17,19 @@
   ~ under the License.
   --%>
 
-<%@ page import="org.apache.axis2.Constants,
+<%@ page
+	import="org.apache.axis2.Constants,
                  java.util.Hashtable"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
-  <%
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
+<%
       Hashtable errornessModules =(Hashtable)request.getSession().getAttribute(Constants.ERROR_MODULE_MAP);
       String moduleName = request.getParameter("moduleName");
-  %> <h3>The Module has deployment faults</h3><%
-  %><span style="color:red"><%=(String)errornessModules.get(moduleName) %></span><%
+  %>
+<h3>The Module has deployment faults</h3>
+<%
+  %><span style="color: red"><%=(String)errornessModules.get(moduleName) %></span>
+<%
   
   %>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

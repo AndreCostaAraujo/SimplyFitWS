@@ -17,12 +17,12 @@
   ~ under the License.
   --%>
 
-<%@ page session="false" %>
-<%@ page import="org.apache.axis2.Constants" %>
-<%@ page import="org.apache.axis2.context.ConfigurationContext" %>
-<%@ page import="org.apache.axis2.description.Parameter" %>
-<%@ page import="org.apache.axis2.transport.http.AxisServlet" %>
-<%@ page import="org.apache.axis2.transport.TransportListener" %>
+<%@ page session="false"%>
+<%@ page import="org.apache.axis2.Constants"%>
+<%@ page import="org.apache.axis2.context.ConfigurationContext"%>
+<%@ page import="org.apache.axis2.description.Parameter"%>
+<%@ page import="org.apache.axis2.transport.http.AxisServlet"%>
+<%@ page import="org.apache.axis2.transport.TransportListener"%>
 <%!
     private String frontendHostUrl;
     private String hostname;

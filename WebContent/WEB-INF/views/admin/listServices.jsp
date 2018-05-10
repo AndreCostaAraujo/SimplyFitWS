@@ -17,25 +17,26 @@
   ~ under the License.
   --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ page import="org.apache.axis2.Constants,
-                 org.apache.axis2.description.AxisModule" %>
-<%@ page import="org.apache.axis2.description.AxisOperation" %>
-<%@ page import="org.apache.axis2.description.AxisService" %>
-<%@ page import="org.apache.axis2.description.Parameter" %>
-<%@ page import="org.apache.axis2.engine.AxisConfiguration" %>
-<%@ page import="org.apache.axis2.util.JavaUtils" %>
-<%@ page import="java.util.Collection" %>
-<%@ page import="java.util.Enumeration" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Hashtable" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ page
+	import="org.apache.axis2.Constants,
+                 org.apache.axis2.description.AxisModule"%>
+<%@ page import="org.apache.axis2.description.AxisOperation"%>
+<%@ page import="org.apache.axis2.description.AxisService"%>
+<%@ page import="org.apache.axis2.description.Parameter"%>
+<%@ page import="org.apache.axis2.engine.AxisConfiguration"%>
+<%@ page import="org.apache.axis2.util.JavaUtils"%>
+<%@ page import="java.util.Collection"%>
+<%@ page import="java.util.Enumeration"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="java.util.Hashtable"%>
+<%@ page import="java.util.Iterator"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
 
 <h1>Available Services</h1>
-<t:status/>
+<t:status />
 <% String prefix = request.getAttribute("frontendHostUrl") + (String)request.getAttribute(Constants.SERVICE_PATH) + "/";
 %>
 <%
@@ -51,7 +52,9 @@
             AxisService axisService = (AxisService) iterator.next();
             operations = axisService.getOperations();
             serviceName = axisService.getName();
-%><h2><a style="color:blue" href="<%=prefix + axisService.getName()%>?wsdl"><%=serviceName%></a></h2>
+%><h2>
+	<a style="color: blue" href="<%=prefix + axisService.getName()%>?wsdl"><%=serviceName%></a>
+</h2>
 <%
     // do we need to enable REST in the main servlet so that it handles both REST and SOAP messages
     boolean disableREST = false;
@@ -78,10 +81,17 @@
         serviceDescription = "No description available for this service";
     }
 %>
-<p>Service Description : <%=serviceDescription%><br>
-Service EPR : <%=prefix + axisService.getName()%><br>
-Service Status : <%=axisService.isActive() ? "Active" : "InActive"%>
-<form name="<%=serviceName%>" method="post" action="<c:url value="axis2-admin/deleteService"/>"><input type="hidden" name="serviceName" value="<%=serviceName%>"><input type="submit" value="Remove Service"></form></p>
+<p>
+	Service Description :
+	<%=serviceDescription%><br> Service EPR :
+	<%=prefix + axisService.getName()%><br> Service Status :
+	<%=axisService.isActive() ? "Active" : "InActive"%>
+<form name="<%=serviceName%>" method="post"
+	action="<c:url value="axis2-admin/deleteService"/>">
+	<input type="hidden" name="serviceName" value="<%=serviceName%>"><input
+		type="submit" value="Remove Service">
+</form>
+</p>
 <%
     Collection engagedModules = axisService.getEngagedModules();
     String moduleName;
@@ -97,10 +107,16 @@ Service Status : <%=axisService.isActive() ? "Active" : "InActive"%>
             modules_present = true;
 %>
 <ul>
-    <% }
-    %><li><form method="post" action="<c:url value="axis2-admin/disengageModule"/>"><%=moduleName%> :: <input type="hidden" name="type" value="service"><input type="hidden" name="serviceName" value="<%=serviceName%>"><input type="hidden" name="module" value="<%=moduleName%>"><input type="submit" value="Disengage"></form></li>
+	<% }
+    %><li><form method="post"
+			action="<c:url value="axis2-admin/disengageModule"/>"><%=moduleName%>
+			:: <input type="hidden" name="type" value="service"><input
+				type="hidden" name="serviceName" value="<%=serviceName%>"><input
+				type="hidden" name="module" value="<%=moduleName%>"><input
+				type="submit" value="Disengage">
+		</form></li>
 
-    <%
+	<%
         }
         if (modules_present) {%>
 </ul>
@@ -113,36 +129,46 @@ Service Status : <%=axisService.isActive() ? "Active" : "InActive"%>
 <span style="font-style: italic">Available operations</span>
 <%
 } else {
-%><span style="font-style: italic"> There are no Operations specified</span>
+%><span style="font-style: italic"> There are no Operations
+	specified</span>
 <%
     }
 %>
-<ul><%
+<ul>
+	<%
     operations = axisService.getOperations();
     while (operations.hasNext()) {
         AxisOperation axisOperation = (AxisOperation) operations.next();
 %><li><%=axisOperation.getName().getLocalPart()%></li>
-    <%--                 <br>Operation EPR : <%=prifix + axisService.getName().getLocalPart() + "/"+ axisOperation.getName().getLocalPart()%>--%>
-    <%
+	<%--                 <br>Operation EPR : <%=prifix + axisService.getName().getLocalPart() + "/"+ axisOperation.getName().getLocalPart()%>--%>
+	<%
         engagedModules = axisOperation.getEngagedModules();
         if (engagedModules.size() > 0) {
     %>
-    <li>
-    
-    <span style="font-style: italic">Engaged Modules for the Operation</span>
-    <ul>
-    <%
+	<li><span style="font-style: italic">Engaged Modules for
+			the Operation</span>
+		<ul>
+			<%
         for (Iterator iterator2 = engagedModules.iterator(); iterator2.hasNext();) {
             AxisModule moduleDecription = (AxisModule) iterator2.next();
             moduleName = moduleDecription.getName();
     %>
-    <li>
-    <form method="post" action="<c:url value="axis2-admin/disengageModule"/>"><%=moduleName%> :: <input type="hidden" name="type" value="operation"><input type="hidden" name="serviceName" value="<%=serviceName%>"><input type="hidden" name="operation" value="<%=axisOperation.getName().getLocalPart()%>"><input type="hidden" name="module" value="<%=moduleName%>"><input type="submit" value="Disengage"></form>
-    </li>
-    <%
+			<li>
+				<form method="post"
+					action="<c:url value="axis2-admin/disengageModule"/>"><%=moduleName%>
+					:: <input type="hidden" name="type" value="operation"><input
+						type="hidden" name="serviceName" value="<%=serviceName%>"><input
+						type="hidden" name="operation"
+						value="<%=axisOperation.getName().getLocalPart()%>"><input
+						type="hidden" name="module" value="<%=moduleName%>"><input
+						type="submit" value="Disengage">
+				</form>
+			</li>
+			<%
     }
 	%>
-</ul></li><%
+		</ul></li>
+	<%
         }
 
     }
@@ -156,20 +182,25 @@ Service Status : <%=axisService.isActive() ? "Active" : "InActive"%>
         if (errornessservice.size() > 0) {
             request.getSession().setAttribute(Constants.IS_FAULTY, Constants.IS_FAULTY);
 %>
-<h3 style="color:red">Faulty Services</h3>
+<h3 style="color: red">Faulty Services</h3>
 <%
     Enumeration faultyservices = errornessservice.keys();
     while (faultyservices.hasMoreElements()) {
         String faultyserviceName = (String) faultyservices.nextElement();
-%><h3><a styel="color:blue" href="services/ListFaultyServices?serviceName=<%=faultyserviceName%>">
-    <%=faultyserviceName%></a></h3>
+%><h3>
+	<a styel="color:blue"
+		href="services/ListFaultyServices?serviceName=<%=faultyserviceName%>">
+		<%=faultyserviceName%></a>
+</h3>
 <%
             }
         }
         status = true;
     }
     if (!status) {
-%> No services listed! Try hitting refresh. <%
+%>
+No services listed! Try hitting refresh.
+<%
     }
 %>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

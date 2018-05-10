@@ -17,16 +17,17 @@
   ~ under the License.
   --%>
 
-<%@ page import="org.apache.axis2.Constants,
-                 org.apache.axis2.description.AxisOperation" %>
-<%@ page import="org.apache.axis2.description.AxisService" %>
-<%@ page import="org.apache.axis2.description.Parameter" %>
-<%@ page import="org.apache.axis2.engine.AxisConfiguration" %>
-<%@ page import="org.apache.axis2.util.JavaUtils" %>
-<%@ page import="java.util.Hashtable" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
+<%@ page
+	import="org.apache.axis2.Constants,
+                 org.apache.axis2.description.AxisOperation"%>
+<%@ page import="org.apache.axis2.description.AxisService"%>
+<%@ page import="org.apache.axis2.description.Parameter"%>
+<%@ page import="org.apache.axis2.engine.AxisConfiguration"%>
+<%@ page import="org.apache.axis2.util.JavaUtils"%>
+<%@ page import="java.util.Hashtable"%>
+<%@ page import="java.util.Iterator"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
 <h1>List Single Service</h1>
 <%
     String prefix = request.getAttribute("frontendHostUrl") + (String)request.getAttribute(Constants.SERVICE_PATH) + "/";
@@ -38,7 +39,7 @@
         Hashtable errornessservices = (Hashtable) request.getSession().getAttribute(Constants.ERROR_SERVICE_MAP);
 %>
 <h3>This Axis service has deployment faults.</h3>
-<p style="color:red"><%=(String) errornessservices.get(servicName) %></p>
+<p style="color: red"><%=(String) errornessservices.get(servicName) %></p>
 <%
 
 } else {
@@ -50,10 +51,12 @@
         //operationsList = operations.values();
         String serviceName = axisService.getName();
 %>
-<h2><a style="color:blue" href="<%=prefix + axisService.getName()%>?wsdl"><%=serviceName%></a></h2>
+<h2>
+	<a style="color: blue" href="<%=prefix + axisService.getName()%>?wsdl"><%=serviceName%></a>
+</h2>
 <p>
-<span style="color:blue">Service EPR : </span>
-<span style="color:black"><%=prefix + axisService.getName()%></span>
+	<span style="color: blue">Service EPR : </span> <span
+		style="color: black"><%=prefix + axisService.getName()%></span>
 </p>
 <%
     boolean disableREST = false;
@@ -77,32 +80,39 @@
         serviceDescription = "No description available for this service";
     }
 %>
-<h4>Service Description : <span style="color:black"><%=serviceDescription%></span></h4>
-<p style="color:blue; font-style:italic">
-Service Status : <%=axisService.isActive() ? "Active" : "InActive"%>
+<h4>
+	Service Description : <span style="color: black"><%=serviceDescription%></span>
+</h4>
+<p style="color: blue; font-style: italic">
+	Service Status :
+	<%=axisService.isActive() ? "Active" : "InActive"%>
 </p>
 <%
     if (opItr.hasNext()) {
-%><i>Available operations</i><%
+%><i>Available operations</i>
+<%
 } else {
-%><i> There are no Operations specified</i><%
+%><i> There are no Operations specified</i>
+<%
     }
     opItr = axisService.getOperations();
-%><ul><%
+%><ul>
+	<%
     while (opItr.hasNext()) {
         AxisOperation axisOperation = (AxisOperation) opItr.next();
 %><li><%=axisOperation.getName().getLocalPart()%></li>
-    <%--                <br>Operation EPR : <%=prifix + axisService.getName().getLocalPart() + "/"+ axisOperation.getName().getLocalPart()%>--%>
-    <%
+	<%--                <br>Operation EPR : <%=prifix + axisService.getName().getLocalPart() + "/"+ axisOperation.getName().getLocalPart()%>--%>
+	<%
         }
-    %></ul>
+    %>
+</ul>
 <%
 } else {
 %>
-<h3 style="color:red">No services found in this location</h3>
+<h3 style="color: red">No services found in this location</h3>
 <%
         }
 
     }
 %>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

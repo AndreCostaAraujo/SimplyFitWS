@@ -17,24 +17,28 @@
   ~ under the License.
   --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="org.apache.axis2.Constants,
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page
+	import="org.apache.axis2.Constants,
                  org.apache.axis2.description.AxisService,
                  java.util.Collection,
                  java.util.HashMap,
                  java.util.Iterator"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
 <h1>Deactivate Service</h1>
-<form method="post" name="serviceInActivate" action="<c:url value="axis2-admin/doDeactivateService"/>">
-  <table summary="main content table" style="width: 100%"  border="0">
-<tr>
-  <td colspan="2" >
-     <p>Only the services that are active are listed below. Note that although you can activate a service from this page, once system is restarted the service will be active again</p>
-  </td>
-  </tr>
-  <tr>
-<%
+<form method="post" name="serviceInActivate"
+	action="<c:url value="axis2-admin/doDeactivateService"/>">
+	<table summary="main content table" style="width: 100%" border="0">
+		<tr>
+			<td colspan="2">
+				<p>Only the services that are active are listed below. Note that
+					although you can activate a service from this page, once system is
+					restarted the service will be active again</p>
+			</td>
+		</tr>
+		<tr>
+			<%
 HashMap services = (HashMap)request.getSession().getAttribute(Constants.SERVICE_MAP);
 Collection col = services.values();
 String html = "";
@@ -52,33 +56,30 @@ request.getSession().setAttribute(Constants.SERVICE_MAP,null);
 if (count > 0) {
 %>
 
-    <td style="width: 20%"> Select Service : </td>
-    <td style="width: 80%">
-       <select name="axisService" class="selectBoxes">
-<%=html%>
-		</select>
-	</td>
-  </tr>
-  <tr>
-    <td style="width: 20%">Deactivate Service </td>
-    <td style="width: 80%"><input type="checkbox" name="turnoff">
-    </td>
-  </tr>
-  <tr>
-  <td>&nbsp;</td>
-  <td>
-    <input name="submit" type="submit" value=" Deactivate " >
-   <input name="reset" type="reset" value=" Clear " >
-  </td>
-<%
+			<td style="width: 20%">Select Service :</td>
+			<td style="width: 80%"><select name="axisService"
+				class="selectBoxes">
+					<%=html%>
+			</select></td>
+		</tr>
+		<tr>
+			<td style="width: 20%">Deactivate Service</td>
+			<td style="width: 80%"><input type="checkbox" name="turnoff">
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="submit" type="submit" value=" Deactivate ">
+				<input name="reset" type="reset" value=" Clear "></td>
+			<%
 } else {
 	%>
-	<td colspan="2">No active services present.</td>
-	<%
+			<td colspan="2">No active services present.</td>
+			<%
 }
 %>
-  </tr>
+		</tr>
 
-</table>
+	</table>
 </form>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

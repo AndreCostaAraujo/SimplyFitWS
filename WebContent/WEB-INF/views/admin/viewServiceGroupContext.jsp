@@ -20,8 +20,8 @@
 <%@ page import="org.apache.axis2.context.ConfigurationContext"%>
 <%@ page import="org.apache.axis2.context.ServiceGroupContext"%>
 <%@ page import="java.util.Iterator"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
 <h1>Running Context hierarchy</h1>
 <%
     String type = (String) request.getSession().getAttribute("TYPE");
@@ -32,24 +32,28 @@
             if ("VIEW".equals(type)) {
               Iterator propertyNames = sgContext.getPropertyNames();
 %>
-             <h4>Persistence properties</h4><ul>
-             <%
+<h4>Persistence properties</h4>
+<ul>
+	<%
                  while (propertyNames.hasNext()) {
                      String key = (String) propertyNames.next();
                      Object property =  sgContext.getProperty(key);
               %>
-                   <li><%=key%> : <%=property.toString()%></li>
-              <%
+	<li><%=key%> : <%=property.toString()%></li>
+	<%
                  }
-                 %></ul>
-                 <%
+                 %>
+</ul>
+<%
             }   else if("DELETE".equals(type)){
                  configCtx.removeServiceGroupContext(sgContext.getId());
                  %>Removed the context<%
             }
         }
     } else {
-%> <h4>No service group context found</h4><%
+%>
+<h4>No service group context found</h4>
+<%
     }
 %>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

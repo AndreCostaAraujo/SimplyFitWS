@@ -18,7 +18,8 @@
   --%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-<%@ page import="org.apache.axis2.AxisFault,
+<%@ page
+	import="org.apache.axis2.AxisFault,
                  org.apache.axis2.Constants,
                  org.apache.axis2.addressing.EndpointReference,
                  org.apache.axis2.client.Options,
@@ -36,18 +37,19 @@
                  org.apache.axiom.om.OMAbstractFactory,
                  javax.xml.stream.XMLOutputFactory,
                  javax.xml.stream.XMLStreamException"
-         session="false" %>
+	session="false"%>
 <head>
-    <jsp:include page="/WEB-INF/include/httpbase.jsp"/>
-    <title>Axis2 Happiness Page</title>
-    <link href="axis2-web/css/axis-style.css" rel="stylesheet" type="text/css">
+<jsp:include page="/WEB-INF/include/httpbase.jsp" />
+<title>Axis2 Happiness Page</title>
+<link href="axis2-web/css/axis-style.css" rel="stylesheet"
+	type="text/css">
 </head>
 
 <body>
-<jsp:include page="/WEB-INF/include/header.inc"/>
-<jsp:include page="/WEB-INF/include/link-footer.jsp"/>
-<%IP = request.getRequestURL().toString();%>
-<%!
+	<jsp:include page="/WEB-INF/include/header.inc" />
+	<jsp:include page="/WEB-INF/include/link-footer.jsp" />
+	<%IP = request.getRequestURL().toString();%>
+	<%!
     /*
     * Happiness tests for axis2. These look at the classpath and warn if things
     * are missing. Normally addng this much code in a JSP page is mad
@@ -368,15 +370,15 @@
     }
 %>
 
-<h1>Axis2 Happiness Page</h1>
+	<h1>Axis2 Happiness Page</h1>
 
-<h2>Examining webapp configuration</h2>
+	<h2>Examining webapp configuration</h2>
 
 
 
-<h4>Essential Components</h4>
+	<h4>Essential Components</h4>
 
-<%
+	<%
     int needed = 0,wanted = 0;
 
     /**
@@ -404,7 +406,7 @@
             "http://dist.codehaus.org/stax/jars/");
 
 %>
-<%
+	<%
     /*
     * resources on the classpath path
     */
@@ -430,54 +432,54 @@
     }
     //now look at wanted stuff
 %>
-<p>
-    <span style="font-style:bold italic">Note:</span> Even if everything this page probes for is present,
-    there is no guarantee your Axis Service will work, because there are many configuration options
-    that we do not check for. These tests are <span style="font-style:italic">necessary</span> but not <span style="font-style:italic">sufficient</span>
-</p>
+	<p>
+		<span style="font-style: bold italic">Note:</span> Even if everything
+		this page probes for is present, there is no guarantee your Axis
+		Service will work, because there are many configuration options that
+		we do not check for. These tests are <span style="font-style: italic">necessary</span>
+		but not <span style="font-style: italic">sufficient</span>
+	</p>
 
-<h2>Examining Version Service</h2>
-<%
+	<h2>Examining Version Service</h2>
+	<%
     boolean serviceStatus = invokeTheService();
     if (serviceStatus) {
 %>
-<div>
-    <p style="color:green; font-style:bold">
-        Found Axis2 default Version service and Axis2 is working
-        properly.
-    </p>
-        
-    <p>Now you can drop a service archive in axis2/WEB-INF/services.
-        Following output was produced while invoking Axis2 version service
-    </p>
-    <p><%= value%></p>
-</div>
+	<div>
+		<p style="color: green; font-style: bold">Found Axis2 default
+			Version service and Axis2 is working properly.</p>
 
-<%
+		<p>Now you can drop a service archive in axis2/WEB-INF/services.
+			Following output was produced while invoking Axis2 version service</p>
+		<p><%= value%></p>
+	</div>
+
+	<%
 } else {
 %>
-<p style="color:brown">
-    There was a problem in Axis2 version service , may be
-        the service not available or some thing has gone wrong. But this does
-        not mean system is not working !
-        Try to upload some other service and check to see whether it is
-        working.
-</p>
+	<p style="color: brown">There was a problem in Axis2 version
+		service , may be the service not available or some thing has gone
+		wrong. But this does not mean system is not working ! Try to upload
+		some other service and check to see whether it is working.</p>
 
-<%
+	<%
     }
 %>
-<h2>Examining Application Server</h2>
-<blockquote>
-<table summary="main content table">
-    <tr><td>Servlet version</td><td><%=getServletVersion()%></td></tr>
-    <tr><td>Platform</td>
-        <td><%=getServletConfig().getServletContext().getServerInfo()%></td>
-    </tr>
-</table>
-</blockquote>
-<h2>Examining System Properties</h2>
-<%
+	<h2>Examining Application Server</h2>
+	<blockquote>
+		<table summary="main content table">
+			<tr>
+				<td>Servlet version</td>
+				<td><%=getServletVersion()%></td>
+			</tr>
+			<tr>
+				<td>Platform</td>
+				<td><%=getServletConfig().getServletContext().getServerInfo()%></td>
+			</tr>
+		</table>
+	</blockquote>
+	<h2>Examining System Properties</h2>
+	<%
     /**
      * Dump the system properties
      */
@@ -502,7 +504,7 @@
     }
 %>
 
-<jsp:include page="/WEB-INF/include/footer.inc"/>
+	<jsp:include page="/WEB-INF/include/footer.inc" />
 </body>
 </html>
 

@@ -17,27 +17,27 @@
   ~ under the License.
   --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="org.apache.axis2.Constants" %>
-<%@ page import="org.apache.axis2.context.ConfigurationContext" %>
-<%@ page import="org.apache.axis2.context.ServiceContext" %>
-<%@ page import="org.apache.axis2.context.ServiceGroupContext" %>
-<%@ page import="org.apache.axis2.deployment.util.PhasesInfo" %>
-<%@ page import="org.apache.axis2.description.AxisModule" %>
-<%@ page import="org.apache.axis2.description.AxisOperation" %>
-<%@ page import="org.apache.axis2.description.AxisService" %>
-<%@ page import="org.apache.axis2.description.AxisServiceGroup" %>
-<%@ page import="org.apache.axis2.description.Parameter" %>
-<%@ page import="org.apache.axis2.engine.AxisConfiguration" %>
-<%@ page import="org.apache.axis2.engine.Handler" %>
-<%@ page import="org.apache.axis2.engine.Phase" %>
-<%@ page import="org.apache.axis2.util.JavaUtils" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Collection" %>
-<%@ page import="java.util.Enumeration" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Hashtable" %>
-<%@ page import="java.util.Iterator" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="org.apache.axis2.Constants"%>
+<%@ page import="org.apache.axis2.context.ConfigurationContext"%>
+<%@ page import="org.apache.axis2.context.ServiceContext"%>
+<%@ page import="org.apache.axis2.context.ServiceGroupContext"%>
+<%@ page import="org.apache.axis2.deployment.util.PhasesInfo"%>
+<%@ page import="org.apache.axis2.description.AxisModule"%>
+<%@ page import="org.apache.axis2.description.AxisOperation"%>
+<%@ page import="org.apache.axis2.description.AxisService"%>
+<%@ page import="org.apache.axis2.description.AxisServiceGroup"%>
+<%@ page import="org.apache.axis2.description.Parameter"%>
+<%@ page import="org.apache.axis2.engine.AxisConfiguration"%>
+<%@ page import="org.apache.axis2.engine.Handler"%>
+<%@ page import="org.apache.axis2.engine.Phase"%>
+<%@ page import="org.apache.axis2.util.JavaUtils"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Collection"%>
+<%@ page import="java.util.Enumeration"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="java.util.Hashtable"%>
+<%@ page import="java.util.Iterator"%>
 <%--
 ~ Licensed to the Apache Software Foundation (ASF) under one
 ~ or more contributor license agreements. See the NOTICE file
@@ -56,27 +56,28 @@
 ~ specific language governing permissions and limitations
 ~ under the License.
 --%>
-<%@ page contentType="text/html;charset=iso-8859-1" language="java" %>
+<%@ page contentType="text/html;charset=iso-8859-1" language="java"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-  <head>
-    <jsp:include page="../include/httpbase.jsp"/>
-    <title>Axis2 :: Administration Page</title>
-    <link href="axis2-web/css/axis-style.css" rel="stylesheet" type="text/css">
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  </head>
+<head>
+<jsp:include page="../include/httpbase.jsp" />
+<title>Axis2 :: Administration Page</title>
+<link href="axis2-web/css/axis-style.css" rel="stylesheet"
+	type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
 
-  <body>
-    <jsp:include page="header.inc"/>
-    <table summary="left frame table" class="FULL_BLANK">
-      <tr>
-        <td valign="top" style="width:20%">
-          <jsp:include page="LeftFrame.jsp"/>
-        </td>
-        <td valign="top" align="left" style="width:80%">
-        <table summary="logout table" width="100%">
-          <tr>
-            <td align="right" colspan="2"><a href="#" onclick="javascript:history.back();">Back</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-              href="<c:url value="axis2-admin/logout"/>">Log out</a></td>
-          </tr>
-        </table>
+<body>
+	<jsp:include page="header.inc" />
+	<table summary="left frame table" class="FULL_BLANK">
+		<tr>
+			<td valign="top" style="width: 20%"><jsp:include
+					page="LeftFrame.jsp" /></td>
+			<td valign="top" align="left" style="width: 80%">
+				<table summary="logout table" width="100%">
+					<tr>
+						<td align="right" colspan="2"><a href="#"
+							onclick="javascript:history.back();">Back</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+							href="<c:url value="axis2-admin/logout"/>">Log out</a></td>
+					</tr>
+				</table>

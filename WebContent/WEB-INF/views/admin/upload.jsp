@@ -17,10 +17,10 @@
   ~ under the License.
   --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
 <script type="text/javascript">
 <!--
 	function checkFileUpload(){
@@ -35,30 +35,39 @@
 </script>
 <h1>Upload an Axis Service Archive File</h1>
 
-<p>You can upload a packaged Axis2 service from this page in two small steps.</p>
+<p>You can upload a packaged Axis2 service from this page in two
+	small steps.</p>
 <ul>
-  <li>Browse to the location and select the axis service archive file you wish to upload</li>
-  <li>Click "Upload" button</li>
+	<li>Browse to the location and select the axis service archive
+		file you wish to upload</li>
+	<li>Click "Upload" button</li>
 </ul>
 <p>Simple as that!</p>
 
-<t:status/>
+<t:status />
 
-<form method="post" name="Axis2upload" id="Axis2upload" action="<c:url value="axis2-admin/doUpload"/>"
-      enctype="multipart/form-data">
-  <table summary="main content table">
-    <tr>
-      <td>Service archive : </td>
-      <td><input id="serviceUpload" type="file" name="filename" size="50"></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td><input name="upload" type="button" onclick="javascript:checkFileUpload();" value=" Upload "></td>
-    </tr>
-  </table>
+<form method="post" name="Axis2upload" id="Axis2upload"
+	action="<c:url value="axis2-admin/doUpload"/>"
+	enctype="multipart/form-data">
+	<table summary="main content table">
+		<tr>
+			<td>Service archive :</td>
+			<td><input id="serviceUpload" type="file" name="filename"
+				size="50"></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="upload" type="button"
+				onclick="javascript:checkFileUpload();" value=" Upload "></td>
+		</tr>
+	</table>
 </form>
 <blockquote>
-<p>Hot deployment of new service archives is <%=request.getAttribute("hotDeployment") %></p>
-<p>Hot update of existing service archives is <%=request.getAttribute("hotUpdate") %></p>
+	<p>
+		Hot deployment of new service archives is
+		<%=request.getAttribute("hotDeployment") %></p>
+	<p>
+		Hot update of existing service archives is
+		<%=request.getAttribute("hotUpdate") %></p>
 </blockquote>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

@@ -17,43 +17,40 @@
   ~ under the License.
   --%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+	session="false"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-  <head>
-    <jsp:include page="/WEB-INF/include/httpbase.jsp"/>
-    <title>Axis 2 - Home</title>
-    <link href="axis2-web/css/axis-style.css" rel="stylesheet" type="text/css">
-  </head>
+<head>
+<jsp:include page="/WEB-INF/include/httpbase.jsp" />
+<title>Axis 2 - Home</title>
+<link href="axis2-web/css/axis-style.css" rel="stylesheet"
+	type="text/css">
+</head>
 
-  <body>
-    <jsp:include page="/WEB-INF/include/header.inc"/>
-    <br>
+<body>
+	<jsp:include page="/WEB-INF/include/header.inc" />
+	<br>
 
-    <h1>Welcome!</h1>
-    Welcome to the new generation of Axis. If you can see this page you have
-    successfully deployed the Axis2 Web Application. However, to ensure that Axis2
-    is properly working, we encourage you to click on the validate link.
-    <br>
-    <ul>
-      <li><a href="services/listServices">Services</a>
-        <br>
-        View the list of all the available services deployed in this server.
-      </li>
-      <li><a href="axis2-web/HappyAxis.jsp">Validate</a>
-        <br>
-        Check the system to see whether all the required libraries are in place
-        and view the system information.
-      </li>
-      <%--<li><a href="interop.jsp">Do an interop test</a>
+	<h1>Welcome!</h1>
+	Welcome to the new generation of Axis. If you can see this page you
+	have successfully deployed the Axis2 Web Application. However, to
+	ensure that Axis2 is properly working, we encourage you to click on the
+	validate link.
+	<br>
+	<ul>
+		<li><a href="services/listServices">Services</a> <br> View
+			the list of all the available services deployed in this server.</li>
+		<li><a href="axis2-web/HappyAxis.jsp">Validate</a> <br>
+			Check the system to see whether all the required libraries are in
+			place and view the system information.</li>
+		<%--<li><a href="interop.jsp">Do an interop test</a>
       <br>
       You can run Interoperability tests here
       </li>--%>
-      <li><a href="axis2-admin/">Administration</a>
-        <br>
-        Console for administering this Axis2 installation.
-      </li>
-    </ul>
-    <jsp:include page="/WEB-INF/include/footer.inc"/>
-  </body>
+		<li><a href="axis2-admin/">Administration</a> <br> Console
+			for administering this Axis2 installation.</li>
+	</ul>
+	<jsp:include page="/WEB-INF/include/footer.inc" />
+</body>
 </html>

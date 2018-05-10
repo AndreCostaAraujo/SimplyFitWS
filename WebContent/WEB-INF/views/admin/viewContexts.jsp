@@ -17,14 +17,14 @@
   ~ under the License.
   --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="org.apache.axis2.Constants"%>
 <%@ page import="org.apache.axis2.context.ConfigurationContext"%>
 <%@ page import="org.apache.axis2.context.ServiceContext"%>
 <%@ page import="org.apache.axis2.context.ServiceGroupContext"%>
 <%@ page import="java.util.Iterator"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
 <h1>Running Context Hierarchy</h1>
 <%
     ConfigurationContext configContext = (ConfigurationContext) request.getSession().getAttribute(
@@ -34,35 +34,43 @@
     if (serviceGroupIds.length > 0) {
 %>
 <ul>
-    <%
+	<%
 
    for (int i = 0; i < serviceGroupIds.length; i++) {
         String groupContextID = serviceGroupIds[i];
         ServiceGroupContext groupContext = configContext.getServiceGroupContext(groupContextID);
         %>
-           <li><%=groupContextID%><a style="color:blue" href="<c:url value="axis2-admin/viewServiceGroupContext"><c:param name="TYPE" value="VIEW"/><c:param name="ID" value="<%=groupContextID%>"/></c:url>">
-                    View</a>  <a style="color:red" href="<c:url value="axis2-admin/viewServiceGroupContext"><c:param name="TYPE" value="DELETE"/><c:param name="ID" value="<%=groupContextID%>"/></c:url>">
-                    Remove</a> </li>
-                    
-                    <li>
-        <%
+	<li><%=groupContextID%><a style="color: blue"
+		href="<c:url value="axis2-admin/viewServiceGroupContext"><c:param name="TYPE" value="VIEW"/><c:param name="ID" value="<%=groupContextID%>"/></c:url>">
+			View</a> <a style="color: red"
+		href="<c:url value="axis2-admin/viewServiceGroupContext"><c:param name="TYPE" value="DELETE"/><c:param name="ID" value="<%=groupContextID%>"/></c:url>">
+			Remove</a></li>
+
+	<li>
+		<%
         Iterator serviceContextItr = groupContext.getServiceContexts();
-            %><ul><%
+            %><ul>
+			<%
         while (serviceContextItr.hasNext()) {
             ServiceContext serviceContext = (ServiceContext)serviceContextItr.next();
              String serviceConID = serviceContext.getAxisService().getName();
         %>
-            <li><%=serviceConID%><a style="color:blue" href="<c:url value="axis2-admin/viewServiceContext"><c:param name="TYPE" value="VIEW"/><c:param name="ID" value="<%=serviceConID%>"/><c:param name="PID" value="<%=groupContextID%>"/></c:url>">
-                    View</a></li>
-        <%
+			<li><%=serviceConID%><a style="color: blue"
+				href="<c:url value="axis2-admin/viewServiceContext"><c:param name="TYPE" value="VIEW"/><c:param name="ID" value="<%=serviceConID%>"/><c:param name="PID" value="<%=groupContextID%>"/></c:url>">
+					View</a></li>
+			<%
         }
-                %></ul><hr>
-                </li><%
+                %>
+		</ul>
+		<hr>
+	</li>
+	<%
     }
-    %>  </ul>
-        <%
+    %>
+</ul>
+<%
             } else {%>
-	<p>No running contexts were found on the system.</p>
-            <%}
+<p>No running contexts were found on the system.</p>
+<%}
 %>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

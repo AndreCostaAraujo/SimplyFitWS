@@ -1,4 +1,5 @@
- <%--
+
+<%--
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements. See the NOTICE file
   ~ distributed with this work for additional information
@@ -15,17 +16,19 @@
   ~ KIND, either express or implied. See the License for the
   ~ specific language governing permissions and limitations
   ~ under the License.
-  --%> <%@ page import="org.apache.axis2.Constants,
+  --%>
+<%@ page
+	import="org.apache.axis2.Constants,
                  org.apache.axis2.description.AxisModule,
                  java.util.Collection"%>
- <%@ page import="java.util.Enumeration"%>
- <%@ page import="java.util.HashMap"%>
- <%@ page import="java.util.Hashtable"%>
- <%@ page import="java.util.Iterator"%>
- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
-  <h1>Available Modules</h1>
-     <%
+<%@ page import="java.util.Enumeration"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="java.util.Hashtable"%>
+<%@ page import="java.util.Iterator"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
+<h1>Available Modules</h1>
+<%
          boolean foundModules = false;
 	boolean wroteUL = false;
          HashMap moduleMap = (HashMap)request.getSession().getAttribute(Constants.MODULE_MAP);
@@ -46,36 +49,37 @@
         if (!wroteUL){
 			wroteUL = true;
 %>
-	<ul>
-<%
+<ul>
+	<%
 		}
      %><li><b><%=modulename%></b> : <%=moduleDescription%></li>
-      <%
+	<%
              }
 		if (wroteUL){
 %>
-	</ul>
+</ul>
 <%
 		}
         }
       %>
-      <%if(errornesModules.size()>0){
+<%if(errornesModules.size()>0){
           %>
-      <h3 style="color:red">Faulty Modules</h3>
-             <%
+<h3 style="color: red">Faulty Modules</h3>
+<%
              Enumeration faultyModules = errornesModules.keys();
              while (faultyModules.hasMoreElements()) {
                  foundModules = true;
                  String faultyModuleName = (String) faultyModules.nextElement();
-             %><a href="errorModule.jsp?moduleName=<%=faultyModuleName%>">
-                    <%=faultyModuleName%></a>
-                    <%
+             %><a
+	href="errorModule.jsp?moduleName=<%=faultyModuleName%>"> <%=faultyModuleName%></a>
+<%
              }
       }
              if(! foundModules) {
                  %>
-                 <h2 style="color:blue">There are no modules deployed in the system.</h2>
-                 <%
+<h2 style="color: blue">There are no modules deployed in the
+	system.</h2>
+<%
              }
      %>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />

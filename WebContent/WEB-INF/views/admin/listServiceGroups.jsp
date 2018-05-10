@@ -17,15 +17,15 @@
   ~ under the License.
   --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="org.apache.axis2.Constants" %>
-<%@ page import="org.apache.axis2.description.AxisModule" %>
-<%@ page import="org.apache.axis2.description.AxisService" %>
-<%@ page import="org.apache.axis2.description.AxisServiceGroup" %>
-<%@ page import="java.util.Collection" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/include/adminheader.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="org.apache.axis2.Constants"%>
+<%@ page import="org.apache.axis2.description.AxisModule"%>
+<%@ page import="org.apache.axis2.description.AxisService"%>
+<%@ page import="org.apache.axis2.description.AxisServiceGroup"%>
+<%@ page import="java.util.Collection"%>
+<%@ page import="java.util.Iterator"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<jsp:include page="/WEB-INF/include/adminheader.jsp" />
 <h1>Available Service Groups</h1>
 <%
     Iterator axisServiceGroupIter = (Iterator) request.getSession().getAttribute(
@@ -39,31 +39,35 @@
 %>
 <h2><%=groupName%></h2>
 <ul>
-    <%
+	<%
         while (axisServiceIter.hasNext()){
             AxisService axisService = (AxisService) axisServiceIter.next();
             String serviceName = axisService.getName();
     %>
-    <li><a style="color:blue" href="<c:url value="axis2-admin/listSingleService"><c:param name="serviceName" value="<%=serviceName%>"/></c:url>">
-        <%=serviceName%></a></li>
-    <%
+	<li><a style="color: blue"
+		href="<c:url value="axis2-admin/listSingleService"><c:param name="serviceName" value="<%=serviceName%>"/></c:url>">
+			<%=serviceName%></a></li>
+	<%
         }
     %>
 </ul>
 <%
     if (modules.size() > 0) {
 %>
-<I>Engaged modules</I><ul>
-    <%
+<I>Engaged modules</I>
+<ul>
+	<%
         for (Iterator iterator = modules.iterator(); iterator.hasNext();) {
             AxisModule axisOperation = (AxisModule) iterator.next();
             String modulDesc = axisOperation.getName();
     %>
-    <li><%=modulDesc%></li>
-    <%
+	<li><%=modulDesc%></li>
+	<%
         }
-    %></ul><%
+    %>
+</ul>
+<%
         }
     }
 %>
-<jsp:include page="/WEB-INF/include/adminfooter.jsp"/>
+<jsp:include page="/WEB-INF/include/adminfooter.jsp" />
