@@ -16,7 +16,7 @@ import org.ini4j.InvalidFileFormatException;
 
 public class ConectaMySql {
 	
-	private static String URL = "jdbc:mysql://simplyfit-mysql/simplyfit";
+	private static String URL = "jdbc:mysql://simplyfit-mysql:3306/simplyfit";
 	private static String USER = "SFAdmin";
 	private static String PASS = "123qwer@";
 	
